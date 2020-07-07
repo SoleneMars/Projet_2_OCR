@@ -3,6 +3,8 @@ package com.hemebiotech.analytics;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AnalyticsCounter {
 	private static int headacheCount = 0;	// initialize to 0
@@ -17,12 +19,15 @@ public class AnalyticsCounter {
 
 		int i = 0;	// set i to 0
 		int headCount = 0;	// counts headaches
+		int feverCount = 0;
 		while (line != null) {
+			int count = 0;
 			i++;	// increment i
-			System.out.println("symptom from file: " + line);
 			if (line.equals("headache")) {
 				headCount++;
-				System.out.println("number of headaches: " + headCount);
+			}
+			if (line.equals("fever")) {
+				feverCount++;
 			}
 			else if (line.equals("rush")) {
 				rashCount++;
@@ -33,6 +38,8 @@ public class AnalyticsCounter {
 
 			line = reader.readLine();	// get another symptom
 		}
+		System.out.println("Headaches," + headCount);
+		System.out.println("Fever," + feverCount);
 		
 		// next generate output
 		FileWriter writer = new FileWriter ("result.out");

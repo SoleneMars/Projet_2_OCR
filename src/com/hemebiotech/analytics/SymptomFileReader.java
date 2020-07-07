@@ -29,7 +29,7 @@ public class SymptomFileReader implements ISymptomReader {
 		if (filepath != null) {
 			try {
 				FileReader fileReader = new FileReader(filepath);
-				BufferedReader reader = new BufferedReader (new FileReader("symptoms.txt"));
+				BufferedReader reader = new BufferedReader(fileReader);
 				String line = reader.readLine();
 				
 				while (line != null) {
