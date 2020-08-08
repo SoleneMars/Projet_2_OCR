@@ -26,20 +26,22 @@ public class SymptomFileReader implements ISymptomReader {
 		List<String> result = new ArrayList<>();
 		
 		if (filepath != null) {
+			BufferedReader reader;
 			try {
 				FileReader fileReader = new FileReader(filepath);
-				BufferedReader reader = new BufferedReader(fileReader);
+				reader = new BufferedReader(fileReader);
 				String line = reader.readLine();
 
 				while (line != null) {
 					result.add(line);
 					line = reader.readLine();
 				}
-				finally {
-				reader.close();
-				}
+
 			} catch (IOException e) {
 				e.printStackTrace();
+			}
+			finally {
+				reader.close();
 			}
 		}
 		
