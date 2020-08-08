@@ -30,12 +30,14 @@ public class SymptomFileReader implements ISymptomReader {
 				FileReader fileReader = new FileReader(filepath);
 				BufferedReader reader = new BufferedReader(fileReader);
 				String line = reader.readLine();
-				
+
 				while (line != null) {
 					result.add(line);
 					line = reader.readLine();
 				}
+				finally {
 				reader.close();
+				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
