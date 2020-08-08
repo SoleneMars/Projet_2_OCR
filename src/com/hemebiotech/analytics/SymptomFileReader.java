@@ -26,7 +26,7 @@ public class SymptomFileReader implements ISymptomReader {
 		List<String> result = new ArrayList<>();
 		
 		if (filepath != null) {
-			BufferedReader reader;
+			BufferedReader reader = null;
 			try {
 				FileReader fileReader = new FileReader(filepath);
 				reader = new BufferedReader(fileReader);
@@ -36,13 +36,14 @@ public class SymptomFileReader implements ISymptomReader {
 					result.add(line);
 					line = reader.readLine();
 				}
-
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			finally {
+			finally
+			{
 				reader.close();
 			}
+
 		}
 		
 		return result;
