@@ -41,7 +41,11 @@ public class SymptomFileReader implements ISymptomReader {
 			}
 			finally
 			{
-				reader.close();
+				try {
+					reader.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 
 		}
